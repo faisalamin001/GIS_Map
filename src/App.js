@@ -1,24 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Map from "./Components/Map/Map";
+import Sidebar from "./Components/Sidebar/Sidebar";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
+  const [govt, setGovt] = useState(true);
+  const [autonomus, setAutonomus] = useState(true);
+  const [genPublic, setGenPublic] = useState(true);
+  const [minority, setMinority] = useState(true);
+  const [special, setSpecial] = useState(true);
+  const [retired, setRetired] = useState(true);
+  const [overseas, setOverseas] = useState(true);
+  const [media, setMedia] = useState(true);
+  const [others, setOthers] = useState(true);
+  const [allLayers, setAllLayers] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 1 }}>
+          <Sidebar
+            allLayers={allLayers}
+            setAllLayers={setAllLayers}
+            autonomus={autonomus}
+            setAutonomus={setAutonomus}
+            genPublic={genPublic}
+            setGenPublic={setGenPublic}
+            minority={minority}
+            setMinority={setMinority}
+            special={special}
+            setSpecial={setSpecial}
+            retired={retired}
+            setRetired={setRetired}
+            govt={govt}
+            setGovt={setGovt}
+            overseas={overseas}
+            media={media}
+            setMedia={setMedia}
+            others={others}
+            setOthers={setOthers}
+            setOverseas={setOverseas}
+          />
+        </div>
+        <div style={{ flex: 4, position: "relative" }}>
+          <Map
+            allLayers={allLayers}
+            setAllLayers={setAllLayers}
+            autonomus={autonomus}
+            genPublic={genPublic}
+            minority={minority}
+            special={special}
+            retired={retired}
+            govt={govt}
+            overseas={overseas}
+            media={media}
+            others={others}
+          />
+        </div>
+      </div>
+    </>
   );
 }
 
